@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    
+</head>
+<body>
+
+    <div class="repository">
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+
+        <div class="buttons">
+            <div class="row">
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+                <button onclick="sine()">sin</button>
+                <button onclick="cosine()">cos</button>
+                <button onclick="tan()">tan</button>
+                  
+            </div>
+
+            <div class="row">
+           		<button onclick="power()">x <span style="position: relative; bottom: .4em; right: .1em;">y</span>
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">÷</button>
+                 
+            </div>
+
+            <div class="row">
+                <button onclick="squareroot()">√</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">×</button>
+            </div>
+
+            <div class="row">
+                <button id="ce" onclick="backspace()">CE</button>
+                </button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+            </div>
+
+            <div class="row">
+           
+                <button id="ac" onclick="screen.value=''">AC</button>
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                <button class="btn">+</button>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body 
+    {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh; 
+        background: #808080;
+    }
+     .display #screen 
+     {
+        margin-bottom: .10em;
+        width: 350px;
+        height: 70px;
+        font-size: 50px;
+        text-align: right;
+		background: #ecf0f3;
+        border-radius: 10px;
+        
+    }
+     #eval 
+     {
+        background: #ecf0f3;
+        color: #000000;
+        
+    }
+
+    .repository
+    {
+        margin-left: 1em;
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .row button
+    {
+        width: 50px;
+        height: 40px;
+        font-size: 20px;
+        margin: 10px;
+        border-radius: 10px;   
+    }
+
+    .row button:hover 
+    {
+        
+        background: #fff000;
+    }
+
+    .content
+    {
+        width: 50px;
+        margin-top: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: center;
+    }
+
+    #ac
+    {
+        background: #ff0000;
+       
+    }
+    
+    #ce 
+    {
+        background: #90ee90;
+  
+    }
+
+    
+</style>
+<script>
+    var screen = document.querySelector('#screen');
+    var btn = document.querySelectorAll('.btn');
+    for (item of btn) 
+    {
+        item.addEventListener('click', (t) => {
+            btntext = t.target.innerText;
+            if (btntext == '÷') {
+                btntext = '/';
+            }
+
+            if (btntext == '×') {
+                btntext = '*';
+            }
+            if (btntext == '-') {
+                btntext = '-';
+            }
+
+            screen.value += btntext;
+        });
+    }
+
+    function sine()
+    {
+        screen.value = Math.sin(screen.value);
+    }
+    
+
+    function cosine() 
+    {
+        screen.value = Math.cos(screen.value);
+    }
+
+    function tan() 
+    {
+        screen.value = Math.tan(screen.value);
+    }
+    function power()
+    {
+        screen.value = Math.pow(screen.value, 2);
+    }
+
+    function squareroot()
+    {
+        screen.value = Math.sqrt(screen.value, 2);
+    }
+    
+    function backspace() 
+    {
+        screen.value = screen.value.substr(0, screen.value.length-1);
+    }
+</script>
+
+</html>
